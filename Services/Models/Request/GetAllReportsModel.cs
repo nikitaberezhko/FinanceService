@@ -1,6 +1,6 @@
-namespace Services.Models;
+namespace Services.Models.Request;
 
-public class GetAllReports
+public class GetAllReportsModel
 {
     public int Page { get; set; }
     

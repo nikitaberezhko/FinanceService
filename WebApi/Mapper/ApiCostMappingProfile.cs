@@ -6,6 +6,10 @@ public class ApiCostMappingProfile : Profile
 {
     public ApiCostMappingProfile()
     {
+        // Request -> Request models
         
+        
+        
+        // Response models -> Responses
     }
 }

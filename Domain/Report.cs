@@ -6,8 +6,6 @@ public class Report
     
     public DateOnly Date { get; set; }
     
-    public double Profit { get; set; }
-    
     public virtual ICollection<Revenue> Revenues { get; set; }
     
     public virtual ICollection<Cost> Costs { get; set; }

@@ -20,7 +20,6 @@ public class DataContext : DbContext
         
         modelBuilder.Entity<Report>().Property(x => x.Id).HasColumnName("id");
         modelBuilder.Entity<Report>().Property(x => x.Date).HasColumnName("date");
-        modelBuilder.Entity<Report>().Property(x => x.Profit).HasColumnName("profit");
         modelBuilder.Entity<Report>().Property(x => x.Revenues).HasColumnName("revenues");
         modelBuilder.Entity<Report>().Property(x => x.Costs).HasColumnName("costs");
         modelBuilder.Entity<Report>().Property(x => x.TotalRevenue).HasColumnName("total_revenue");

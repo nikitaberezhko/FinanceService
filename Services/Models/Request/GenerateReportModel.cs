@@ -1,6 +1,8 @@
-namespace Services.Models;
+namespace Services.Models.Request;
 
 public class GenerateReportModel
 {
-    public DateOnly Date { get; set; }
+    public DateOnly EndDate { get; set; }
+    
+    public int Period { get; set; }
 }

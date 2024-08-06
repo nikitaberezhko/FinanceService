@@ -4,9 +4,7 @@ public class ShortenedReportModel
 {
     public Guid Id { get; set; }
     
-    public DateTime Date { get; set; }
-    
-    public double Profit { get; set; }
+    public DateOnly Date { get; set; }
     
     public double TotalRevenue { get; set; }
     

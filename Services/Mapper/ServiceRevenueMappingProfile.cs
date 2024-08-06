@@ -15,6 +15,7 @@ public class ServiceRevenueMappingProfile : Profile
             .ForMember(d => d.Amount, map => map.MapFrom(c => c.Amount));
 
         
+        
         // Domain models -> Response models
         CreateMap<Revenue, RevenueModel>()
             .ForMember(d => d.Id, map => map.MapFrom(c => c.Id))

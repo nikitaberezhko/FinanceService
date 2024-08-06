@@ -1,6 +1,6 @@
 namespace Services.Models.Request;
 
-public class DeleteReportModel
+public class GetReportByIdModel
 {
     public Guid Id { get; set; }
 }

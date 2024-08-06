@@ -15,6 +15,7 @@ public class ServiceCostMappingProfile : Profile
             .ForMember(d => d.Amount, map => map.MapFrom(c => c.Amount));
         
         
+        
         // Domain models -> Response models
         CreateMap<Cost, CostModel>()
             .ForMember(d => d.Id, map => map.MapFrom(c => c.Id))
