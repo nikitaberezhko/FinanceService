@@ -2,6 +2,7 @@ using Asp.Versioning;
 using FluentValidation;
 using Infrastructure.RefitClient;
 using Infrastructure.Repositories.Implementations;
+using Infrastructure.Settings;
 using Microsoft.EntityFrameworkCore;
 using Persistence.EntityFramework;
 using Refit;
@@ -14,7 +15,6 @@ using Services.Services.Interfaces;
 using Services.Validation;
 using Services.Validation.Validators;
 using WebApi.Mapper;
-using WebApi.Settings;
 using ExceptionHandlerMiddleware = WebApi.Middlewares.ExceptionHandlerMiddleware;
 
 namespace WebApi.Extensions;
