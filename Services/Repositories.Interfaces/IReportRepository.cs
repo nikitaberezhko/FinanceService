@@ -4,11 +4,11 @@ namespace Services.Repositories.Interfaces;
 
 public interface IReportRepository
 {
-    Task Add(Report report);
-    
-    Task Delete(Report report);
+    Task<Guid> Add(Report report);
 
-    Task<List<Report>> GetShortenedList();
+    Task<Guid> Delete(Report report);
+
+    Task<List<Report>> GetShortenedList(int page, int pageSize);
 
     Task<Report> GetById(Report report);
 

@@ -1,5 +1,7 @@
 using Infrastructure.RefitClient;
 using Refit;
+using WebApi.Extensions;
+using WebApi.Middlewares;
 
 namespace WebApi;
 
@@ -8,27 +10,33 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        var services = builder.Services;
 
-        // Add services to the container.
-        builder.Services.AddAuthorization();
-
-        builder.Services.AddRefitClient<IOrderApi>()
-            .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://localhost:8081"));
+        services.AddControllers();
         
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
+        // Extensions
+        services.AddDataContext(builder.Configuration
+            .GetConnectionString("DefaultConnectionString")!);
+        services.ConfigureRefitClient(builder.Configuration);
+        services.AddSwagger();
+        services.AddValidation();
+        services.AddMappers();
+        services.AddServices();
+        services.AddRepositories();
+        services.AddVersioning();
+        services.AddExceptionHandling();
+        
+        
         var app = builder.Build();
+
+        app.UseMiddleware<ExceptionHandlerMiddleware>();
         
-            app.UseSwagger();
-            app.UseSwaggerUI();
+        app.UseSwagger();
+        app.UseSwaggerUI();
 
         app.UseHttpsRedirection();
 
-        app.UseAuthorization();
-        
-
+        app.MapControllers();
         app.Run();
     }
 }

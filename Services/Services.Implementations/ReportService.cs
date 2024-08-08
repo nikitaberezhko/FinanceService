@@ -24,27 +24,31 @@ public class ReportService(
 
         var response = await orderApiClient.GetOrdersInPeriod(new GetOrdersInPeriodRequest
         {
-            End = model.EndDate.ToDateTime(new TimeOnly(0, 0)),
+            End = model.EndDate.ToDateTime(new TimeOnly(0, 0)).ToUniversalTime(),
             Period = model.Period
         });
 
         var orders = response.Data.Orders;
-        var reportModel = await CreateReport(model.EndDate, orders);
-        await reportRepository.Add(mapper.Map<Report>(reportModel));
+        var result = await CreateReport(model.EndDate, orders);
+        var id = await reportRepository.Add(mapper.Map<Report>(result));
+        result.Id = id;
         
-        return reportModel;
+        return result;
     }
 
-    public async Task Delete(DeleteReportModel model)
+    public async Task<Guid> Delete(DeleteReportModel model)
     {
         await validator.Validate(model);
-        await reportRepository.Delete(mapper.Map<Report>(model));
+        var id = await reportRepository.Delete(mapper.Map<Report>(model));
+        
+        return id;
     }
     
-    public async Task<List<ReportModel>> GetShortenedList()
+    public async Task<List<ShortenedReportModel>> GetShortenedList(GetAllReportsModel model)
     {
-        var reports =await reportRepository.GetShortenedList();
-        var result = mapper.Map<List<ReportModel>>(reports);
+        await validator.Validate(model);
+        var reports = await reportRepository.GetShortenedList(model.Page, model.PageSize);
+        var result = mapper.Map<List<ShortenedReportModel>>(reports);
 
         return result;
     }
@@ -70,12 +74,14 @@ public class ReportService(
                 Amount = x.Price,
                 OrderId = x.Id
             }).ToList(),
-            Costs = orders.Select(x => new CostModel
-            {
-                Id = Guid.NewGuid(),
-                Amount = x.Costs,
-                OrderId = x.Id
-            }).ToList(),
+            Costs = orders
+                .Where(x => x.Costs > 0)
+                .Select(x => new CostModel
+                {
+                    Id = Guid.NewGuid(),
+                    Amount = x.Costs,
+                    OrderId = x.Id
+                }).ToList(),
             TotalRevenue = orders.Sum(x => x.Price),
             TotalCost = orders.Sum(x => x.Costs)
         };
