@@ -1,5 +1,6 @@
 using Exceptions.Infrastructure;
 using Exceptions.Services;
+using Refit;
 using WebApi.Models;
 
 namespace WebApi.Middlewares;
@@ -12,6 +13,15 @@ public class ExceptionHandlerMiddleware(ILogger<ExceptionHandlerMiddleware> logg
         try
         {
             await next(context);
+        }
+        catch (ApiException e)
+        {
+            logger.LogWarning(e, e.Message);
+
+            context.Response.Clear();
+            context.Response.StatusCode = (int)e.StatusCode;
+            context.Response.ContentType = "application/json";
+            await context.Response.WriteAsync(e.Content!);
         }
         catch (InfrastructureException e)
         {
