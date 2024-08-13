@@ -1,5 +1,3 @@
-using Infrastructure.RefitClient;
-using Refit;
 using WebApi.Extensions;
 using WebApi.Middlewares;
 
@@ -25,6 +23,7 @@ public class Program
         services.AddRepositories();
         services.AddVersioning();
         services.AddExceptionHandling();
+        services.AddTelemetry();
         
         
         var app = builder.Build();
@@ -35,6 +34,8 @@ public class Program
         app.UseSwaggerUI();
 
         app.UseHttpsRedirection();
+        
+        app.MapPrometheusScrapingEndpoint();
 
         app.MapControllers();
         app.Run();

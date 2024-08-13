@@ -29,7 +29,7 @@ public class ReportService(
         });
 
         var orders = response.Data.Orders;
-        var result = await CreateReport(model.EndDate, orders);
+        var result = CreateReport(model.EndDate, orders);
         var id = await reportRepository.Add(mapper.Map<Report>(result));
         result.Id = id;
         
@@ -63,17 +63,18 @@ public class ReportService(
     }
     
     
-    private Task<ReportModel> CreateReport(DateOnly date, List<OrderApiFullModel> orders)
+    private ReportModel CreateReport(DateOnly date, List<OrderApiFullModel> orders)
     {
         var report = new ReportModel
         {
             Date = date,
-            Revenues = orders.Select(x => new RevenueModel
-            {
-                Id = Guid.NewGuid(),
-                Amount = x.Price,
-                OrderId = x.Id
-            }).ToList(),
+            Revenues = orders
+                .Select(x => new RevenueModel
+                {
+                    Id = Guid.NewGuid(),
+                    Amount = x.Price,
+                    OrderId = x.Id
+                }).ToList(),
             Costs = orders
                 .Where(x => x.Costs > 0)
                 .Select(x => new CostModel
@@ -86,6 +87,6 @@ public class ReportService(
             TotalCost = orders.Sum(x => x.Costs)
         };
 
-        return Task.FromResult(report);
+        return report;
     }
 }

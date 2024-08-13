@@ -45,7 +45,7 @@ public class ExceptionHandlerMiddleware(ILogger<ExceptionHandlerMiddleware> logg
         }
         catch (Exception e)
         {
-            logger.LogError(e, e.Message);
+            logger.LogCritical(e, e.Message);
             
             await InterceptResponseAsync(
                 context,

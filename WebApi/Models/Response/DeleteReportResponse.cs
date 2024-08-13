@@ -1,5 +1,3 @@
-using WebApi.Models.ApiModels;
-
 namespace WebApi.Models.Response;
 
 public class DeleteReportResponse
