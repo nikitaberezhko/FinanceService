@@ -28,7 +28,7 @@ public class ReportService(
             Period = model.Period
         });
 
-        var orders = response.Data.Orders;
+        var orders = response.Data!.Orders;
         var result = CreateReport(model.EndDate, orders);
         var id = await reportRepository.Add(mapper.Map<Report>(result));
         result.Id = id;
@@ -69,13 +69,14 @@ public class ReportService(
         {
             Date = date,
             Revenues = orders
-                .Select(x => new RevenueModel
+                .AsParallel().Select(x => new RevenueModel
                 {
                     Id = Guid.NewGuid(),
                     Amount = x.Price,
                     OrderId = x.Id
                 }).ToList(),
             Costs = orders
+                .AsParallel()
                 .Where(x => x.Costs > 0)
                 .Select(x => new CostModel
                 {

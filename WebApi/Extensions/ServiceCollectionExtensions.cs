@@ -4,7 +4,6 @@ using Infrastructure.RefitClient;
 using Infrastructure.Repositories.Implementations;
 using Infrastructure.Settings;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Diagnostics.Metrics;
 using OpenTelemetry.Metrics;
 using Persistence.EntityFramework;
 using Refit;
