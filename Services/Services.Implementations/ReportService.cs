@@ -1,7 +1,7 @@
 using AutoMapper;
 using Domain;
-using OrderApiModels;
-using OrderApiModels.ApiModels;
+using OrderService.Contracts.ApiModels;
+using OrderService.Contracts.Request;
 using Services.Models.OtherModels;
 using Services.Models.Request;
 using Services.Models.Response;

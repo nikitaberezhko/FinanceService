@@ -7,13 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\OrderApiModels\OrderApiModels.csproj" />
       <ProjectReference Include="..\Services\Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="CommonModel.Contracts" Version="1.0.0" />
+      <PackageReference Include="Exceptions.Contracts" Version="1.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.7" />
+      <PackageReference Include="OrderService.Contracts" Version="1.1.0" />
     </ItemGroup>
 
 </Project>

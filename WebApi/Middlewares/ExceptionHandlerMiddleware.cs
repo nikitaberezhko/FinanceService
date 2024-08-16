@@ -1,7 +1,7 @@
-using Exceptions.Infrastructure;
-using Exceptions.Services;
+using CommonModel.Contracts;
+using Exceptions.Contracts.Infrastructure;
+using Exceptions.Contracts.Services;
 using Refit;
-using WebApi.Models;
 
 namespace WebApi.Middlewares;
 

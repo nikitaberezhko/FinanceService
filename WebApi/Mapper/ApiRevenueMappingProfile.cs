@@ -1,6 +1,6 @@
 using AutoMapper;
+using FinanceService.Contracts.ApiModels;
 using Services.Models.OtherModels;
-using WebApi.Models.ApiModels;
 
 namespace WebApi.Mapper;
 

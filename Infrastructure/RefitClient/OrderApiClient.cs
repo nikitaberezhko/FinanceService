@@ -1,5 +1,6 @@
-using OrderApiModels;
-using OrderApiModels.ApiModels;
+using CommonModel.Contracts;
+using OrderService.Contracts.Request;
+using OrderService.Contracts.Response;
 using Services.RefitClients.Interfaces;
 
 namespace Infrastructure.RefitClient;

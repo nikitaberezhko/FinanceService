@@ -1,12 +1,12 @@
 using Asp.Versioning;
 using AutoMapper;
+using CommonModel.Contracts;
+using FinanceService.Contracts.ApiModels;
+using FinanceService.Contracts.Request;
+using FinanceService.Contracts.Response;
 using Microsoft.AspNetCore.Mvc;
 using Services.Models.Request;
 using Services.Services.Interfaces;
-using WebApi.Models;
-using WebApi.Models.ApiModels;
-using WebApi.Models.Request;
-using WebApi.Models.Response;
 
 namespace WebApi.Controllers;
 

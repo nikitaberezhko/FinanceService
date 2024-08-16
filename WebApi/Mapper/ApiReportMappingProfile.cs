@@ -1,10 +1,10 @@
 using AutoMapper;
+using FinanceService.Contracts.ApiModels;
+using FinanceService.Contracts.Request;
+using FinanceService.Contracts.Response;
 using Services.Models.OtherModels;
 using Services.Models.Request;
 using Services.Models.Response;
-using WebApi.Models.ApiModels;
-using WebApi.Models.Request;
-using WebApi.Models.Response;
 
 namespace WebApi.Mapper;
 
