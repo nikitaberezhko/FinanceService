@@ -20,7 +20,7 @@ public class ReportService(
 {
     public async Task<ReportModel> Generate(GenerateReportModel model)
     {
-        await validator.Validate(model);
+        await validator.ValidateAsync(model);
 
         var response = await orderApiClient.GetOrdersInPeriod(new GetOrdersInPeriodRequest
         {
@@ -38,7 +38,7 @@ public class ReportService(
 
     public async Task<Guid> Delete(DeleteReportModel model)
     {
-        await validator.Validate(model);
+        await validator.ValidateAsync(model);
         var id = await reportRepository.Delete(mapper.Map<Report>(model));
         
         return id;
@@ -46,7 +46,7 @@ public class ReportService(
     
     public async Task<List<ShortenedReportModel>> GetShortenedList(GetAllReportsModel model)
     {
-        await validator.Validate(model);
+        await validator.ValidateAsync(model);
         var reports = await reportRepository.GetShortenedList(model.Page, model.PageSize);
         var result = mapper.Map<List<ShortenedReportModel>>(reports);
 
@@ -55,7 +55,7 @@ public class ReportService(
     
     public async Task<ReportModel> GetById(GetReportByIdModel model)
     {
-        await validator.Validate(model);
+        await validator.ValidateAsync(model);
         var report = await reportRepository.GetById(mapper.Map<Report>(model));
         var result = mapper.Map<ReportModel>(report);
         

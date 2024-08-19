@@ -9,5 +9,8 @@ public class GenerateReportValidator : AbstractValidator<GenerateReportModel>
     {
         RuleFor(x => x.EndDate)
             .GreaterThan(new DateOnly(2020, 1, 1));
+
+        RuleFor(x => x.Period)
+            .GreaterThan(0);
     }
 }

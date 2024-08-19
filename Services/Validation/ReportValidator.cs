@@ -11,32 +11,40 @@ public class ReportValidator(
     IValidator<GetAllReportsModel> getAllReportsValidator,
     IValidator<GetReportByIdModel> getReportByIdValidator)
 {
-    public async Task Validate(GenerateReportModel model)
+    public async Task<bool> ValidateAsync(GenerateReportModel model)
     {
         var validationResult = await generateReportValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
             await ThrowWithStandartMessage();
+        
+        return true;
     }
 
-    public async Task Validate(DeleteReportModel model)
+    public async Task<bool> ValidateAsync(DeleteReportModel model)
     {
         var validationResult = await deleteReportValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
             await ThrowWithStandartMessage();
+        
+        return true;
     }
     
-    public async Task Validate(GetAllReportsModel model)
+    public async Task<bool> ValidateAsync(GetAllReportsModel model)
     {
         var validationResult = await getAllReportsValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
             await ThrowWithStandartMessage();
+        
+        return true;
     }
 
-    public async Task Validate(GetReportByIdModel model)
+    public async Task<bool> ValidateAsync(GetReportByIdModel model)
     {
         var validationResult = await getReportByIdValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
             await ThrowWithStandartMessage();
+        
+        return true;
 
     }
 
