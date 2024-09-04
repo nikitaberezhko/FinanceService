@@ -10,7 +10,7 @@ namespace Tests.Services.ReportValidatorTests;
 public class GetAllReportsValidationTests
 {
     [Fact]
-    public async Task GetAllReports_MustBeValid()
+    public async Task ValidateAsync_Should_Be_Valid_With_Valid_Model()
     {
         // Arrange
         var validator = CreateValidatorForGetAllReportsModel();
@@ -28,7 +28,7 @@ public class GetAllReportsValidationTests
     }
 
     [Fact]
-    public async Task GetAllReports_MustThrowServiceExceptionBecausePageLessThan1()
+    public async Task ValidateAsync_Should_Throw_ServiceException_If_Page_Less_Than_1()
     {
         // Arrange
         var validator = CreateValidatorForGetAllReportsModel();
@@ -45,7 +45,7 @@ public class GetAllReportsValidationTests
     }
 
     [Fact]
-    public async Task GetAllReports_MustThrowServiceExceptionBecausePageSizeLessThan1()
+    public async Task ValidateAsync_Should_Throw_ServiceException_If_PageSize_Less_Than_1()
     {
         // Arrange
         var validator = CreateValidatorForGetAllReportsModel();
@@ -62,7 +62,7 @@ public class GetAllReportsValidationTests
     }
 
     [Fact]
-    public async Task GetAllReports_MustThrowServiceExceptionBecausePageSizeMoreThan50()
+    public async Task ValidateAsync_Should_Throw_ServiceException_If_PageSize_More_Than_50()
     {
         // Arrange
         var validator = CreateValidatorForGetAllReportsModel();

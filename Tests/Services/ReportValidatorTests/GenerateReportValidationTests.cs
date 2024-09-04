@@ -10,7 +10,7 @@ namespace Tests.Services.ReportValidatorTests;
 public class GenerateReportValidationTests
 {
     [Fact]
-    public async Task GenerateReport_MustBeValid()
+    public async Task ValidateAsync_Should_Be_Valid_With_Valid_Model()
     {
         // Arrange
         var validator = CreateValidatorForGenerateReportModel();
@@ -28,7 +28,7 @@ public class GenerateReportValidationTests
     }
 
     [Fact]
-    public async Task GenerateReport_MustThrowServiceExceptionBecausePeriodLessThan1()
+    public async Task ValidateAsync_Should_Throw_ServiceException_If_Period_Less_Than_1()
     {
         // Arrange
         var validator = CreateValidatorForGenerateReportModel();
@@ -45,7 +45,7 @@ public class GenerateReportValidationTests
     }
 
     [Fact]
-    public async Task GenerateReport_MustThrowServiceExceptionBecauseEndDateLessThan2020_01_01()
+    public async Task ValidateAsync_Should_Throw_ServiceException_Because_EndDate_Less_Than_2020_01_01()
     {
         // Arrange
         var validator = CreateValidatorForGenerateReportModel();

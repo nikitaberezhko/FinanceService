@@ -10,7 +10,7 @@ namespace Tests.Services.ReportValidatorTests;
 public class GetReportByIdValidationTests
 {
     [Fact]
-    public async Task GetReportById_MustBeValid()
+    public async Task ValidateAsync_Should_Be_Valid_With_Valid_Model()
     {
         // Arrange
         var validator = CreateReportValidatorForGetReportById();
@@ -24,7 +24,7 @@ public class GetReportByIdValidationTests
     }
 
     [Fact]
-    public async Task GetReportById_MustThrowServiceExceptionBecauseIdIsInvalid()
+    public async Task ValidateAsync_Should_Throw_ServiceException_If_Id_Is_Invalid()
     {
         // Arrange
         var validator = CreateReportValidatorForGetReportById();

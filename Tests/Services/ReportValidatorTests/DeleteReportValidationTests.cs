@@ -10,7 +10,7 @@ namespace Tests.Services.ReportValidatorTests;
 public class DeleteReportValidationTests
 {
     [Fact]
-    public async Task DeleteReport_MustBeValid()
+    public async Task ValidateAsync_Should_Be_Valid_With_Valid_Model()
     {
         // Arrange
         var validator = CreateValidatorForDeleteReportModel();
@@ -24,7 +24,7 @@ public class DeleteReportValidationTests
     }
 
     [Fact]
-    public async Task DeleteReport_MustThrowServiceExceptionBecauseIdIsInvalid()
+    public async Task ValidateAsync_Should_Throw_ServiceException_If_Id_Is_Invalid()
     {
         // Arrange
         var validator = CreateValidatorForDeleteReportModel();

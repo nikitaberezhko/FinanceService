@@ -13,7 +13,7 @@ namespace Tests.Services.ReportServiceTests;
 public class DeleteReportCasesTests
 {
     [Fact]
-    public async Task DeleteCase_MustReturnReportModelWithRightId()
+    public async Task DeleteCase_Should_Return_ReportModel_With_Right_Id()
     {
         // Arrange
         var service = CreateReportServiceForDelete(out var expected);

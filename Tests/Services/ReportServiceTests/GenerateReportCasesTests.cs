@@ -17,7 +17,7 @@ namespace Tests.Services.ReportServiceTests;
 public class GenerateReportCasesTests
 {
     [Fact]
-    public async Task GenerateCase_MustReturnReportModelWithNewId()
+    public async Task GenerateCase_Should_Return_ReportModel_With_New_Id()
     {
         // Arrange
         var service = CreateReportServiceForGenerateReport(out _, out _);
@@ -35,7 +35,7 @@ public class GenerateReportCasesTests
     }
 
     [Fact]
-    public async Task GenerateCase_MustReturnReportModelWithRightCosts()
+    public async Task GenerateCase_Should_Return_ReportModel_With_Right_Costs()
     {
         // Arrange
         var service = CreateReportServiceForGenerateReport(out var rightCosts, out _);
@@ -53,7 +53,7 @@ public class GenerateReportCasesTests
     }
 
     [Fact]
-    public async Task GenerateCase_MustReturnReportModelWithRightTotalCost()
+    public async Task GenerateCase_Should_Return_ReportModel_With_Right_TotalCost()
     {
         // Arrange
         var service = CreateReportServiceForGenerateReport(out var rightCosts, out _);
@@ -71,7 +71,7 @@ public class GenerateReportCasesTests
     }
 
     [Fact]
-    public async Task GenerateCase_MustReturnReportModelWithRightRevenues()
+    public async Task GenerateCase_Should_Return_ReportModel_With_Right_Revenues()
     {
         // Arrange
         var service = CreateReportServiceForGenerateReport(out _, out var rightRevenue);
@@ -89,7 +89,7 @@ public class GenerateReportCasesTests
     }
     
     [Fact]
-    public async Task GenerateCase_MustReturnReportModelWithRightTotalRevenue()
+    public async Task GenerateCase_Should_Return_ReportModel_With_Right_TotalRevenue()
     {
         // Arrange
         var service = CreateReportServiceForGenerateReport(out _, out var rightRevenue);

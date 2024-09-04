@@ -13,7 +13,7 @@ namespace Tests.Services.ReportServiceTests;
 public class GetByIdCasesTests
 {
     [Fact]
-    public async Task GetByIdCase_MustReturnReportModelWithRightId()
+    public async Task GetByIdCase_Should_Return_ReportModel_With_Right_Id()
     {
         // Arrange
         var service = CreateReportServiceForGetById(out Guid expected);

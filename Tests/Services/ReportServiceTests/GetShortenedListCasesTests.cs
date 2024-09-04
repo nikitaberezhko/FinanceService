@@ -13,7 +13,7 @@ namespace Tests.Services.ReportServiceTests;
 public class GetShortenedListCasesTests
 {
     [Fact]
-    public async Task GetShortenedListCase_MustReturnNotEmptyList()
+    public async Task GetShortenedListCase_Should_Return_Not_Empty_List()
     {
         // Arrange
         var service = CreateReportServiceForGetShortenedList();
