@@ -116,7 +116,7 @@ public class ReportService(
             {
                 foreach (var order in orders)
                 {
-                    totalRevenue += order.Costs;
+                    totalCost += order.Costs;
                 }
             }
         }
